@@ -1,13 +1,9 @@
-# HCI Project Mobile App
-
-This app is located at:
-
-`/Users/ishitadatta/GeorgiaTech/Sem 1/HCI Foundations/Project/mobile-app`
+# SafeSt
 
 ## Run
 
 ```bash
-cd "/Users/ishitadatta/GeorgiaTech/Sem 1/HCI Foundations/Project/mobile-app"
+cd "/Project/safe-st"
 npm install
 npm run start
 ```
@@ -30,4 +26,4 @@ Then:
   - report from current location during walk
   - red markers shown on map
 - Multi-stage navigation flow (search, route options, walking, arrived)
-# SafeSt
+
