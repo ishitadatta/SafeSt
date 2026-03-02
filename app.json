@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "HCI Project App",
+    "slug": "hci-project-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#284c8f"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {}
+  }
+}
