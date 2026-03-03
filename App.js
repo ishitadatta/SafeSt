@@ -35,9 +35,12 @@ const MIDTOWN_ATLANTA = {
 };
 
 const QUIZ_IMAGES = {
-  dayOpenStreet: require("./assets/quiz/from_pdf/img_0022.jpg"),
-  activeStreetWithStores: require("./assets/quiz/from_pdf/img_0023.jpg"),
-  nightLitSidewalk: require("./assets/quiz/from_pdf/img_0024.jpg"),
+  q1Safe: require("./assets/quiz/q1_safe.png"),
+  q1LessSafe: require("./assets/quiz/q1_less_safe.png"),
+  q2Safe: require("./assets/quiz/q2_safe.jpg"),
+  q2LessSafe: require("./assets/quiz/q2_less_safe.jpg"),
+  q3Safe: require("./assets/quiz/q3_safe.png"),
+  q3LessSafe: require("./assets/quiz/q3_less_safe.png"),
 };
 
 function haversineMeters(a, b) {
@@ -269,32 +272,32 @@ export default function App() {
     () => [
       {
         id: "lighting",
-        a: "Night street with active lighting and clear walking path",
-        b: "Open street section with lower active oversight",
-        aImage: QUIZ_IMAGES.nightLitSidewalk,
-        bImage: QUIZ_IMAGES.dayOpenStreet,
+        a: "Active sidewalk with storefront visibility and pedestrians (daytime)",
+        b: "Quieter street stretch with fewer people and rougher walkway edges",
+        aImage: QUIZ_IMAGES.q1Safe,
+        bImage: QUIZ_IMAGES.q1LessSafe,
         effects: {
           A: { lighting: 2, report: 2, speed: 0 },
-          B: { lighting: 0, report: -1, speed: 1 },
+          B: { lighting: -1, report: -1, speed: 1 },
         },
       },
       {
         id: "construction",
-        a: "Sidewalk with storefront activity and visible pedestrian flow",
-        b: "Street segment with fewer nearby people",
-        aImage: QUIZ_IMAGES.activeStreetWithStores,
-        bImage: QUIZ_IMAGES.dayOpenStreet,
+        a: "Night route with building frontage lighting and visible path definition",
+        b: "Night route near parking deck with lower active street oversight",
+        aImage: QUIZ_IMAGES.q2Safe,
+        bImage: QUIZ_IMAGES.q2LessSafe,
         effects: {
-          A: { lighting: 1, report: 2, speed: 0 },
-          B: { lighting: 0, report: -1, speed: 1 },
+          A: { lighting: 2, report: 1, speed: 0 },
+          B: { lighting: -1, report: -1, speed: 1 },
         },
       },
       {
         id: "visibility",
-        a: "Street with bike lane, police presence, and multiple active cues",
-        b: "Quiet street segment with fewer immediate safety cues",
-        aImage: QUIZ_IMAGES.activeStreetWithStores,
-        bImage: QUIZ_IMAGES.dayOpenStreet,
+        a: "Street with bike lane, police presence, and multiple safety cues",
+        b: "Path affected by temporary construction barriers and closures",
+        aImage: QUIZ_IMAGES.q3Safe,
+        bImage: QUIZ_IMAGES.q3LessSafe,
         effects: {
           A: { lighting: 1, report: 2, speed: 0 },
           B: { lighting: -1, report: -1, speed: 1 },
@@ -996,6 +999,8 @@ function Chip({ text }) {
 
 function OptionCard({ label, text, imageUri, onPress, selected }) {
   const [failed, setFailed] = useState(false);
+  const imageSource =
+    typeof imageUri === "string" ? { uri: imageUri } : imageUri;
 
   return (
     <Pressable style={[styles.optionCard, selected ? styles.optionCardSelected : null]} onPress={onPress}>
@@ -1006,7 +1011,7 @@ function OptionCard({ label, text, imageUri, onPress, selected }) {
         </View>
       ) : (
         <Image
-          source={{ uri: imageUri }}
+          source={imageSource}
           style={styles.imagePlaceholder}
           resizeMode="cover"
           onError={() => setFailed(true)}
