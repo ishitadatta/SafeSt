@@ -1,5 +1,13 @@
 # SafeSt
 
+## Demo
+
+### Map Route Logic
+![Map Route Logic](./assets/demo/map-route-logic.gif)
+
+### Personalization Quiz
+![Personalization Quiz](./assets/demo/personalization-quiz.gif)
+
 ## Run
 
 ```bash
@@ -26,4 +34,3 @@ Then:
   - report from current location during walk
   - red markers shown on map
 - Multi-stage navigation flow (search, route options, walking, arrived)
-
